@@ -14,23 +14,22 @@ public class MyQueue<T> {
 
     public T dequeue() {
         Stack<T> auxStack = new Stack<>();
-        T auxVal;
+        T aux;
 
         if (stack.size() == 0) {
             throw new EmptyQueueException();
         }
 
         while (!stack.empty()) {
-            auxVal = stack.pop();
-            auxStack.push(auxVal);
+            auxStack.push(stack.pop());
         }
 
-        auxVal = auxStack.pop();
+        aux = auxStack.pop();
 
         while (!auxStack.empty()) {
             stack.push(auxStack.pop());
         }
 
-        return auxVal;
+        return aux;
     }
 }
